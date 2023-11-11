@@ -1,4 +1,4 @@
-# Langbot
+# Coder2langbot
 
 ## Creating an image
 
@@ -37,27 +37,10 @@ from stdin and execute it.
 
 In some cases, you may also need to add dependencies to the `Containerfile`.
 
-A simple example language you can take inspiration from is Osyris.
+A simple example language you can take inspiration from is Phosphor.
 
-`langs/osyris/compile.sh` is:
-
-```shell
-git clone https://github.com/mortie/osyris.git
-cd osyris
-git checkout 2db1f2c1746dbda2451d8cc888921a0f518aaf78
-
-cargo build --release
-cp target/release/osyris "$DEPLOYDIR"
-
-touch "$DEPLOYDIR/.done"
-```
-
-And `langs/osyris/run.sh` is:
-
-```
-cat >input.os
-exec ./osyris input.os
-```
+`langs/phosphor/compile.sh` is [here](langs/phosphor/compile.sh).
+And `langs/phosphor/run.sh` is [here](langs/phosphor/run.sh).
 
 ### Some development tips
 
