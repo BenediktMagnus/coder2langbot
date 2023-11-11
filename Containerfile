@@ -1,13 +1,25 @@
-FROM ghcr.io/mortie/langbot-base:1.2.0
+FROM ubuntu:23.10
 
-# Add 'apt-get install -y <packages>' to this line to install additional packages
-RUN apt-get update && apt-get upgrade -y && apt-get install -y swi-prolog \
-    llvm-14
+RUN apt-get update && apt-get upgrade -y && apt-get install -y \
+	git make gcc g++ rustc cargo cmake meson pkg-config \
+	curl flex bison clang python3 \
+	lsb-release binutils nasm llvm-14 \
+	libfmt-dev zlib1g-dev libblocksruntime-dev libgmp-dev libreadline-dev \
+	libnuma-dev libssl-dev gfortran ruby \
+	fortune cowsay xxd \
+	libsqlite3-dev libcurl4-openssl-dev libhiredis-dev \
+	gettext luajit ocaml opam swi-prolog
 
-# Install Node.js 20
-RUN n 20
+# The games path is used by fortune and cowsay:
+ENV PATH "${PATH}:/usr/games"
 
 RUN ln -s /usr/bin/llc-14 /usr/bin/llc
+
+# Install Node.js 20
+RUN apt-get install -y npm && npm install -g n && n 20
+
+RUN mkdir /home/runner && groupadd runner && useradd --home /home/runner -g runner runner
+RUN chown runner:runner /home/runner
 
 WORKDIR /app
 RUN mkdir -p /app/staging # In case we're in a context where mounts don't work
