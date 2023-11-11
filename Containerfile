@@ -1,7 +1,13 @@
 FROM ghcr.io/mortie/langbot-base:1.2.0
 
 # Add 'apt-get install -y <packages>' to this line to install additional packages
-RUN apt-get update && apt-get upgrade -y && apt-get install -y swi-prolog
+RUN apt-get update && apt-get upgrade -y && apt-get install -y swi-prolog \
+    llvm-14
+
+# Install Node.js 20
+RUN n 20
+
+RUN ln -s /usr/bin/llc-14 /usr/bin/llc
 
 WORKDIR /app
 RUN mkdir -p /app/staging # In case we're in a context where mounts don't work

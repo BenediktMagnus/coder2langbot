@@ -1,5 +1,7 @@
+mkdir -p code
+
 # Save code coming from Stdin into a file:
-cat >input.ph
+cat >code/input.ph
 
 if [ -f .unsupported-system ]; then
 	echo "Unsupported host system: $(uname -sm)"
@@ -8,7 +10,7 @@ fi
 
 # Compile the code:
 cd PhosphorCompiler
-node bin/main.js -t linuxAmd64 -s ../PhosphorStandardLibrary ../input.ph ../input
+node bin/main.js -t linuxAmd64 -s ../PhosphorStandardLibrary ../code/input.ph ../input
 
 if [ ! -f ../input ]; then
 	# If no binary exists, the compilation did fail and we need to exit with a non-zero exit code:

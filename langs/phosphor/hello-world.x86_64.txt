@@ -1,5 +1,8 @@
-import 'io';
+module HelloWorld;
+
+import Standard.Io;
+
 function main ()
 {
-    writeLine('Hello World');
+    Io.writeLine('Hello world!');
 }

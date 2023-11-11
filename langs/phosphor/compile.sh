@@ -1,13 +1,13 @@
 if [ "$(uname -sm)" = "Linux x86_64" ]; then
 	git clone https://github.com/PhosphorLang/PhosphorStandardLibrary.git
 	cd PhosphorStandardLibrary
-	git checkout de8733a71b13946380646cffe44a68483b91575b
+	git checkout 9f5d83136507c2c1a536fbc969f8fc914640f0cf
 	./build.sh linuxAmd64
 	cd ..
 
 	git clone https://github.com/PhosphorLang/PhosphorCompiler.git
 	cd PhosphorCompiler
-	git checkout 1015e9c3a15487ceb238fc1f8e250a1e79a56cf2
+	git checkout 081118952d296e91f8f3845225933ad920b1afed
 	npm install
 	npm run build
 	cd ..
