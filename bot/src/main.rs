@@ -5,6 +5,7 @@ use std::fs;
 use std::sync::{Arc, Mutex};
 use std::io::Read;
 use std::borrow::Cow;
+use std::num::NonZeroUsize;
 
 use lazy_static::lazy_static;
 use lru::LruCache;
@@ -457,7 +458,7 @@ async fn main() {
     let handler = Handler {
         user: Mutex::new(None),
         podman: Arc::new(PodManager::new("langbot".into())),
-        responses: Mutex::new(LruCache::new(1024)),
+        responses: Mutex::new(LruCache::new(NonZeroUsize::new(1024).unwrap())),
     };
 
     let mut client = Client::builder(&token, intents)
