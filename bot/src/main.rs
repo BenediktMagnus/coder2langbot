@@ -286,7 +286,7 @@ source code
                 }
             }
 
-            msg += "\nFor more info, check out: <https://github.com/mortie/langbot>";
+            msg += "\nFor more info, check out: <https://github.com/BenediktMagnus/coder2langbot>";
 
             msg
         };
