@@ -28,6 +28,7 @@ impl Pod {
             .arg("create")
             .arg("--rm")
             .arg("--network=none")
+            .arg("--cgroup-conf=memory.high=1073741824")
             .arg(tag)
             .arg("tail")
             .arg("-f")
